@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { QueryClient , QueryClientProvider } from "@tanstack/react-query"
+import HomePage from "./components/HomePage";
 
 function App() {
 
+    const queryClient = new QueryClient();
   return (
-    <>
-    app
-    </>
+    <QueryClientProvider client={queryClient} >
+        <HomePage />
+    </QueryClientProvider>
   )
 }
 
