@@ -9,7 +9,7 @@ function HomePageWithAxios() {
 
     const {data , isLoading , isError , error ,isFetching } = useQuery(["usersaxios"] ,fetchUsersAxios ,{
         // cacheTime:50000,
-        // staleTime:0
+        staleTime:120*1000,
     } );
 
     console.log({data , isLoading , isError , error , isFetching});
