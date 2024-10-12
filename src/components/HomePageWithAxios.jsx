@@ -1,24 +1,12 @@
-import { isError, useQuery } from "@tanstack/react-query"
-import axios from "axios";
+
 import { Link } from "react-router-dom";
+import { useUsersData } from "../hooks/queries";
 
 function HomePageWithAxios() {
 
-    const fetchUsersAxios = () => axios.get("https://jsonplaceholder.typicode.com/users");
-    // const onSuccess = (data) => console.log("sucsess" , data?.data)
 
-    // const onError = (error) => console.log("sucsess" , error)
 
-    const {data , isLoading , isError , error ,isFetching , refetch } = useQuery(["usersaxios"] ,fetchUsersAxios ,{
-        // cacheTime:50000,
-        // staleTime:120*1000,
-        // refetchOnMount:false,
-        // refetchOnWindowFocus:false
-        // refetchInterval: 2 * 1000
-        // enabled:false
-        // onSuccess,
-        // onError
-    } );
+    const {data , isLoading , isError , error ,isFetching , refetch } = useUsersData();
 
     console.log({data , isLoading , isError , error , isFetching});
     // if (isLoading) {
@@ -33,7 +21,7 @@ function HomePageWithAxios() {
     <>
         <Link to="/q" > to axios </Link>
         {data?.data.map(i => 
-             <Link to={`/users/${i.id}`} ><h3 key={i.id} > {i.name} </h3> </Link>
+             <Link  key={i.id} to={`/users/${i.id}`} ><h3> {i.name} </h3> </Link>
              )}
     </>
   )
