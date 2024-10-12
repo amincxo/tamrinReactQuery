@@ -4,7 +4,15 @@ import App from './App.jsx'
 import './index.css'
 import { QueryClient ,QueryClientProvider , useQuery } from "@tanstack/react-query"
 
-const queryClinet = new QueryClient()
+const MINUTE = 1000 * 60 ;
+
+const queryClinet = new QueryClient({
+    defaultOptions: {
+        queries: {
+            gcTime: 10 * MINUTE
+        }
+    }
+})
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
