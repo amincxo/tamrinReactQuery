@@ -7,18 +7,19 @@ function HomePageWithAxios() {
     const fetchUsersAxios = () => axios.get("https://jsonplaceholder.typicode.com/users");
 
 
-    const {data , isLoading , isError , error ,isFetching } = useQuery(["usersaxios"] ,fetchUsersAxios ,{
+    const {data , isLoading , isError , error ,isFetching , refetch } = useQuery(["usersaxios"] ,fetchUsersAxios ,{
         // cacheTime:50000,
         // staleTime:120*1000,
         // refetchOnMount:false,
         // refetchOnWindowFocus:false
         // refetchInterval: 2 * 1000
+        enabled:false
     } );
 
     console.log({data , isLoading , isError , error , isFetching});
-    if (isLoading) {
-         return <h2>loadiiiiiiiing</h2>
-    }
+    // if (isLoading) {
+    //      return <h2>loadiiiiiiiing</h2>
+    // }
 
     if (isError) {
         return <h2> something went worng - {error.message} </h2>
@@ -26,8 +27,9 @@ function HomePageWithAxios() {
 
   return (
     <>
+        <button onClick={refetch} > گرفتن دیتا </button>
         <Link to="/q" > to axios </Link>
-        {data.data.map(i => 
+        {data?.data.map(i => 
         <h3 key={i.id} >
            {i.name}
         </h3>)}
