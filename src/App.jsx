@@ -4,6 +4,7 @@ import HomePage from "./components/HomePage";
 import HomePageWithAxios from "./components/HomePageWithAxios";
 import { Route, Routes } from "react-router-dom";
 import UserDetails from "./components/UserDetails";
+import Form from "./components/Form";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/users/" element={<HomePageWithAxios/>} />
             <Route path="/users/:id" element={<UserDetails/>} />
+            <Route path="/form" element={<Form/>} />
         </Routes>
         <ReactQueryDevtools />
     </QueryClientProvider>
