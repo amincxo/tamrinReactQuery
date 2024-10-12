@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import HomePage from "./components/HomePage";
 import HomePageWithAxios from "./components/HomePageWithAxios";
 import { Route, Routes } from "react-router-dom";
+import UserDetails from "./components/UserDetails";
 
 function App() {
 
@@ -10,8 +11,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient} >
         <Routes>
-            <Route path="/q" element={<HomePageWithAxios/>} />
             <Route path="/" element={<HomePage />} />
+            <Route path="/users/" element={<HomePageWithAxios/>} />
+            <Route path="/users/:id" element={<UserDetails/>} />
         </Routes>
         <ReactQueryDevtools />
     </QueryClientProvider>
