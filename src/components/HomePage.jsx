@@ -1,25 +1,16 @@
 import { useQuery } from "@tanstack/react-query"
+import { Link } from "react-router-dom";
 
 
 function HomePage() {
 
-    const fetchUsers = async () =>{
-        const res = await fetch("https://jsonplaceholder.typicode.com/users");
-        return res.json()
-    }
 
-    const {data , isLoading} = useQuery(["users"] ,fetchUsers  );
-
-    console.log({data , isLoading});
-    if (isLoading) {
-         return <h2>loadiiiiiiiing</h2>
-    }
   return (
     <>
-        {data.map(i => 
-        <h3 key={i.id} >
-           {i.name}
-        </h3>)}
+        sanan
+        <Link to="/q" > to axios </Link>
+
+
     </>
   )
 }
